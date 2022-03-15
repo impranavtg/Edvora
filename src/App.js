@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import './Css/App.css';
+import Header from './Components/Header';
+import Navigation from './Components/Navigation';
+import NearestRides from './Components/NearestRides';
+import UpcomingRides from './Components/UpcomingRides';
+import PastRides from './Components/PastRides';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
-function App() {
+const App=()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='appBody'>
+    <BrowserRouter>
+    <Header/>
+    <Navigation/>
+    <Routes>
+    <Route exact path="/" element={<NearestRides/>}/>
+    <Route exact path="/upcoming" element={<UpcomingRides/>}/>
+    <Route exact path="/past" element={<PastRides/>}/>
+    </Routes>
+    </BrowserRouter>
     </div>
   );
 }
